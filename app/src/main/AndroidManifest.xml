@@ -12,7 +12,7 @@
         android:theme="@style/Theme.ComposePlayground"
         tools:targetApi="31">
         <activity
-            android:name=".ui.tutorials.TipCalculatorActivity"
+            android:name=".ui.tutorials.AffirmationsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
