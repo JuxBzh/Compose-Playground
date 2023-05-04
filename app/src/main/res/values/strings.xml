@@ -2,6 +2,8 @@
     <string name="app_name">Compose Playground</string>
 
     <string name="tip_calculator_title">Calculate tip</string>
-    <string name="hint_cost_of_service">Cost of service</string>
+    <string name="hint_bill_amount">Bill amount</string>
+    <string name="hint_tip_percentage">Tip (%)</string>
     <string name="tip_amount">Tip amount : %s</string>
+    <string name="action_round_up_tip">Round up tip ?</string>
 </resources>

@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.text.input.ImeAction
 
 // region Text fields
 
@@ -43,15 +44,21 @@ fun SmallTitleWithText(text: String, modifier: Modifier = Modifier) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditNumberField(
-    value: Double,
-    onValueChange: (Double) -> Unit,
-    @StringRes placeholderResId: Int
+    modifier: Modifier = Modifier,
+    value: String = "",
+    onValueChange: (String) -> Unit,
+    @StringRes placeholderResId: Int,
+    imeAction: ImeAction? = null
 ) {
     TextField(
-        value = value.toString(),
-        onValueChange = { onValueChange(it.toDoubleOrNull() ?: 0.0) },
+        value = value,
+        onValueChange = onValueChange,
         label = { Text(text = stringResource(id = placeholderResId)) },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Number,
+            imeAction = imeAction ?: ImeAction.Default
+        ),
+        modifier = modifier
     )
 }
 
