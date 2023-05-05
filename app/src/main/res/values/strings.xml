@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Compose Playground</string>
 
+    <string name="tip_calculator">Tip calculator (State + Button)</string>
+    <string name="affirmations">Affirmations (List)</string>
+    <string name="courses">Courses (Grid)</string>
+
     <string name="tip_calculator_title">Calculate tip</string>
     <string name="hint_bill_amount">Bill amount</string>
     <string name="hint_tip_percentage">Tip (%)</string>
