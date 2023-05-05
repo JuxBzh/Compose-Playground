@@ -28,15 +28,15 @@ import androidx.compose.ui.unit.dp
 import com.jux.composeplayground.R
 import com.jux.composeplayground.data.TopicDataSource
 import com.jux.composeplayground.model.Topic
+import com.jux.composeplayground.ui.components.DefaultPage
 import com.jux.composeplayground.ui.components.MediumLabelWithTextAndDrawableStart
 import com.jux.composeplayground.ui.components.SmallBodyWithText
-import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
 
 class CoursesActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposePlaygroundTheme {
+            DefaultPage {
                 CoursesWithTopics(topics = TopicDataSource.loadAll())
             }
         }
@@ -93,7 +93,7 @@ fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun TopicCardPreview() {
-    ComposePlaygroundTheme {
+    DefaultPage {
         val topic = Topic(R.string.architecture, R.drawable.architecture, 100)
         TopicCard(topic)
     }

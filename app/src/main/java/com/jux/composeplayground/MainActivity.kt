@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,11 +18,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,23 +30,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jux.composeplayground.data.TutorialDataSource
 import com.jux.composeplayground.model.Tutorial
+import com.jux.composeplayground.ui.components.DefaultPage
 import com.jux.composeplayground.ui.components.LargeTitleWithText
-import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
 import com.jux.composeplayground.ui.tutorials.TipCalculatorActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposePlaygroundTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    PlaygroundWithTutorials(tutorials = TutorialDataSource.loadAll()) {
-                        val intent = Intent(this, it.activity)
-                        startActivity(intent)
-                    }
+            DefaultPage {
+                PlaygroundWithTutorials(tutorials = TutorialDataSource.loadAll()) {
+                    val intent = Intent(this, it.activity)
+                    startActivity(intent)
                 }
             }
         }
@@ -87,7 +81,8 @@ fun TutorialRow(tutorial: Tutorial, modifier: Modifier = Modifier) {
     ) {
         Image(
             painter = painterResource(id = tutorial.iconResId),
-            contentDescription = stringResource(id = tutorial.nameResId)
+            contentDescription = stringResource(id = tutorial.nameResId),
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
         )
         Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.component_default_spacing)))
         LargeTitleWithText(resId = tutorial.nameResId)
@@ -97,7 +92,7 @@ fun TutorialRow(tutorial: Tutorial, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun TutorialRowPreview() {
-    ComposePlaygroundTheme {
+    DefaultPage {
         val tutorial = Tutorial(
             R.string.tip_calculator,
             R.drawable.outline_calculate_24,
