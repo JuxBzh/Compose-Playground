@@ -26,10 +26,28 @@ import androidx.compose.ui.unit.dp
 // region Text fields
 
 @Composable
+fun LargeDisplayWithText(@StringRes resId: Int, modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(id = resId),
+        style = MaterialTheme.typography.displayLarge,
+        modifier = modifier
+    )
+}
+
+@Composable
 fun LargeTitleWithText(@StringRes resId: Int, modifier: Modifier = Modifier) {
     Text(
         text = stringResource(id = resId),
         style = MaterialTheme.typography.titleLarge,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun MediumTitleWithText(@StringRes resId: Int, modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(id = resId),
+        style = MaterialTheme.typography.titleMedium,
         modifier = modifier
     )
 }
@@ -48,6 +66,15 @@ fun SmallBodyWithText(@StringRes resId: Int, modifier: Modifier = Modifier) {
     Text(
         text = stringResource(id = resId),
         style = MaterialTheme.typography.bodySmall,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun MediumBodyWithText(text: String, modifier: Modifier = Modifier) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.bodyMedium,
         modifier = modifier
     )
 }

@@ -5,6 +5,7 @@ import com.jux.composeplayground.model.Tutorial
 import com.jux.composeplayground.ui.tutorials.AffirmationsActivity
 import com.jux.composeplayground.ui.tutorials.CoursesActivity
 import com.jux.composeplayground.ui.tutorials.TipCalculatorActivity
+import com.jux.composeplayground.ui.tutorials.WoofActivity
 
 object TutorialDataSource {
 
@@ -19,6 +20,7 @@ object TutorialDataSource {
             R.drawable.outline_format_list_bulleted_24,
             AffirmationsActivity::class.java
         ),
-        Tutorial(R.string.courses, R.drawable.outline_grid_on_24, CoursesActivity::class.java)
+        Tutorial(R.string.courses, R.drawable.outline_grid_on_24, CoursesActivity::class.java),
+        Tutorial(R.string.woof, R.drawable.outline_animation_24, WoofActivity::class.java)
     )
 }
