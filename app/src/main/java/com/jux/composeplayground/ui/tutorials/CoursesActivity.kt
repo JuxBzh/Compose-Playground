@@ -29,6 +29,7 @@ import com.jux.composeplayground.R
 import com.jux.composeplayground.data.TopicDataSource
 import com.jux.composeplayground.model.Topic
 import com.jux.composeplayground.ui.components.DefaultPage
+import com.jux.composeplayground.ui.components.DefaultScaffold
 import com.jux.composeplayground.ui.components.MediumLabelWithTextAndDrawableStart
 import com.jux.composeplayground.ui.components.SmallBodyWithText
 
@@ -45,13 +46,16 @@ class CoursesActivity : ComponentActivity() {
 
 @Composable
 fun CoursesWithTopics(topics: List<Topic>, modifier: Modifier = Modifier) {
-    LazyVerticalGrid(
-        modifier = modifier,
-        columns = GridCells.Fixed(count = 2),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        items(topics) { topic ->
-            TopicCard(topic = topic)
+    DefaultScaffold(topAppBarTitleResId = R.string.courses) {
+        LazyVerticalGrid(
+            modifier = modifier,
+            contentPadding = it,
+            columns = GridCells.Fixed(count = 2),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            items(topics) { topic ->
+                TopicCard(topic = topic)
+            }
         }
     }
 }

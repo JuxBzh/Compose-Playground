@@ -1,9 +1,11 @@
 package com.jux.composeplayground.ui.components
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -19,6 +21,21 @@ fun DefaultPage(content: @Composable () -> Unit) {
         ) {
             content()
         }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DefaultScaffold(
+    @StringRes topAppBarTitleResId: Int,
+    modifier: Modifier = Modifier,
+    content: @Composable (PaddingValues) -> Unit
+) {
+    Scaffold(
+        modifier = modifier,
+        topBar = { AppBarWithTitle(titleResId = topAppBarTitleResId) }
+    ) {
+        content(it)
     }
 }
 

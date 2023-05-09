@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.jux.composeplayground.R
 import com.jux.composeplayground.data.DogDataSource
 import com.jux.composeplayground.model.Dog
-import com.jux.composeplayground.ui.components.AppBarWithTitle
+import com.jux.composeplayground.ui.components.DefaultScaffold
 import com.jux.composeplayground.ui.components.MediumBodyWithText
 import com.jux.composeplayground.ui.components.MediumTitleWithText
 import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
@@ -44,12 +42,9 @@ class WoofActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WoofList(dogs: List<Dog>, modifier: Modifier = Modifier) {
-    Scaffold(
-        topBar = { WoofTopBar() }
-    ) {
+    DefaultScaffold(modifier = modifier, topAppBarTitleResId = R.string.woof_activity) {
         LazyColumn(modifier = modifier, contentPadding = it) {
             items(dogs) { dog ->
                 DogItem(
@@ -59,11 +54,6 @@ fun WoofList(dogs: List<Dog>, modifier: Modifier = Modifier) {
             }
         }
     }
-}
-
-@Composable
-fun WoofTopBar() {
-    AppBarWithTitle(titleResId = R.string.woof_activity)
 }
 
 @Composable

@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.jux.composeplayground.data.TutorialDataSource
 import com.jux.composeplayground.model.Tutorial
 import com.jux.composeplayground.ui.components.DefaultPage
+import com.jux.composeplayground.ui.components.DefaultScaffold
 import com.jux.composeplayground.ui.components.LargeTitleWithText
 import com.jux.composeplayground.ui.tutorials.TipCalculatorActivity
 
@@ -54,18 +54,20 @@ fun PlaygroundWithTutorials(
     modifier: Modifier = Modifier,
     onTutorialClick: (Tutorial) -> Unit
 ) {
-    LazyColumn(
-        contentPadding = PaddingValues(vertical = 32.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(tutorials) { tutorial ->
-            TutorialRow(
-                tutorial = tutorial,
-                modifier = modifier.clickable { onTutorialClick.invoke(tutorial) })
-            Divider(
-                modifier = modifier.padding(horizontal = dimensionResource(id = R.dimen.component_default_spacing_large)),
-                color = Color.LightGray
-            )
+    DefaultScaffold(topAppBarTitleResId = R.string.app_name) {
+        LazyColumn(
+            contentPadding = it,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(tutorials) { tutorial ->
+                TutorialRow(
+                    tutorial = tutorial,
+                    modifier = modifier.clickable { onTutorialClick.invoke(tutorial) })
+                Divider(
+                    modifier = modifier.padding(horizontal = dimensionResource(id = R.dimen.component_default_spacing_large)),
+                    color = Color.LightGray
+                )
+            }
         }
     }
 }

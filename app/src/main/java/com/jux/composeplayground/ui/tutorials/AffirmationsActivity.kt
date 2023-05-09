@@ -22,6 +22,7 @@ import com.jux.composeplayground.R
 import com.jux.composeplayground.data.AffirmationDataSource
 import com.jux.composeplayground.model.Affirmation
 import com.jux.composeplayground.ui.components.DefaultPage
+import com.jux.composeplayground.ui.components.DefaultScaffold
 import com.jux.composeplayground.ui.components.SmallTitleWithText
 
 class AffirmationsActivity : ComponentActivity() {
@@ -37,9 +38,11 @@ class AffirmationsActivity : ComponentActivity() {
 
 @Composable
 fun AffirmationsList(affirmations: List<Affirmation>, modifier: Modifier = Modifier) {
-    LazyColumn(modifier = modifier) {
-        items(affirmations) { affirmation ->
-            AffirmationCard(affirmation = affirmation)
+    DefaultScaffold(topAppBarTitleResId = R.string.affirmations) {
+        LazyColumn(modifier = modifier, contentPadding = it) {
+            items(affirmations) { affirmation ->
+                AffirmationCard(affirmation = affirmation)
+            }
         }
     }
 }
