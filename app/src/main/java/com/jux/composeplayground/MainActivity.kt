@@ -32,7 +32,7 @@ import com.jux.composeplayground.model.Tutorial
 import com.jux.composeplayground.ui.components.DefaultPage
 import com.jux.composeplayground.ui.components.DefaultScaffold
 import com.jux.composeplayground.ui.components.LargeTitleWithText
-import com.jux.composeplayground.ui.tutorials.TipCalculatorActivity
+import com.jux.composeplayground.ui.tutorials.tip.TipCalculatorActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

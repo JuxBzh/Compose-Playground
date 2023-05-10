@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.tutorials.TipCalculatorActivity" />
+        <activity android:name=".ui.tutorials.tip.TipCalculatorActivity" />
         <activity android:name=".ui.tutorials.AffirmationsActivity" />
         <activity android:name=".ui.tutorials.CoursesActivity" />
         <activity android:name=".ui.tutorials.WoofActivity" />
