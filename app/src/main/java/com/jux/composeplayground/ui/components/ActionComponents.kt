@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,3 +40,52 @@ fun SwitchWithText(
         )
     }
 }
+
+// region Buttons
+
+@Composable
+fun ButtonWithText(
+    @StringRes resId: Int,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Button(
+        modifier = modifier,
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors()
+    ) {
+        Text(text = stringResource(id = resId))
+    }
+}
+
+@Composable
+fun OutlinedButtonWithText(
+    @StringRes resId: Int,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    OutlinedButton(
+        modifier = modifier,
+        onClick = onClick,
+        colors = ButtonDefaults.outlinedButtonColors()
+    ) {
+        Text(text = stringResource(id = resId))
+    }
+}
+
+@Composable
+fun TextButtonWithText(
+    @StringRes resId: Int,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    TextButton(
+        modifier = modifier,
+        onClick = onClick,
+        colors = ButtonDefaults.textButtonColors()
+    ) {
+        Text(text = stringResource(id = resId))
+    }
+}
+
+// endregion

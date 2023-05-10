@@ -28,6 +28,7 @@ object Deps {
     val androidXCore by lazy { "androidx.core:core:${Versions.androidXCore}" }
     val androidXLifecycleRuntime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidXLifecycle}" }
     val androidXActivityCompose by lazy { "androidx.activity:activity-compose:${Versions.androidXActivity}" }
+    val androidXViewModelCompose by lazy { "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.androidXLifecycle}" }
     val androidXComposeUi by lazy { "androidx.activity:activity-compose:${Versions.androidXComposeUi}" }
     val androidXComposeToolingPreview by lazy { "androidx.compose.ui:ui-tooling-preview:${Versions.androidXComposeUi}" }
     val androidXComposeMaterial3 by lazy { "androidx.compose.material3:material3:${Versions.androidXComposeMaterial3}" }

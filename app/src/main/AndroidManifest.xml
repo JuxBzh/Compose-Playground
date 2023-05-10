@@ -24,6 +24,7 @@
         <activity android:name=".ui.tutorials.AffirmationsActivity" />
         <activity android:name=".ui.tutorials.CoursesActivity" />
         <activity android:name=".ui.tutorials.WoofActivity" />
+        <activity android:name=".ui.tutorials.unscramble.UnscrambleActivity" />
     </application>
 
 </manifest>

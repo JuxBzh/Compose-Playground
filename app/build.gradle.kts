@@ -50,6 +50,7 @@ dependencies {
     implementation(Deps.androidXCore)
     implementation(Deps.androidXLifecycleRuntime)
     implementation(Deps.androidXActivityCompose)
+    implementation(Deps.androidXViewModelCompose)
     implementation(Deps.androidXComposeUi)
     implementation(Deps.androidXComposeToolingPreview)
     implementation(Deps.androidXComposeMaterial3)
