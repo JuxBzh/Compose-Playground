@@ -29,10 +29,15 @@ import androidx.compose.ui.unit.dp
 // region Text fields
 
 @Composable
-fun LargeDisplayWithText(@StringRes resId: Int, modifier: Modifier = Modifier) {
+fun LargeDisplayWithText(
+    @StringRes resId: Int,
+    modifier: Modifier = Modifier,
+    color: Color? = null
+) {
     Text(
         text = stringResource(id = resId),
         style = MaterialTheme.typography.displayLarge,
+        color = color ?: Color.Unspecified,
         modifier = modifier
     )
 }
@@ -130,6 +135,15 @@ fun MediumHeadlineWithText(text: String, modifier: Modifier = Modifier) {
     Text(
         text = text,
         style = MaterialTheme.typography.headlineMedium,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun LargeHeadlineWithText(@StringRes resId: Int, modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(id = resId),
+        style = MaterialTheme.typography.headlineLarge,
         modifier = modifier
     )
 }

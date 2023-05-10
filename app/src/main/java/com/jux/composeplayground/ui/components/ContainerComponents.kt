@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
@@ -35,7 +36,12 @@ fun DefaultScaffold(
         modifier = modifier,
         topBar = { AppBarWithTitle(titleResId = topAppBarTitleResId) }
     ) {
-        content(it)
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            content(it)
+        }
     }
 }
 
@@ -44,6 +50,14 @@ fun DefaultScaffold(
 fun AppBarWithTitle(@StringRes titleResId: Int, modifier: Modifier = Modifier) {
     TopAppBar(
         modifier = modifier,
-        title = { LargeDisplayWithText(resId = titleResId) }
+        title = {
+            LargeDisplayWithText(
+                resId = titleResId,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
+        },
+        colors = TopAppBarDefaults.mediumTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
     )
 }

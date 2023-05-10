@@ -5,6 +5,7 @@ import com.jux.composeplayground.model.Tutorial
 import com.jux.composeplayground.ui.tutorials.AffirmationsActivity
 import com.jux.composeplayground.ui.tutorials.CoursesActivity
 import com.jux.composeplayground.ui.tutorials.WoofActivity
+import com.jux.composeplayground.ui.tutorials.cupcake.CupcakeActivity
 import com.jux.composeplayground.ui.tutorials.tip.TipCalculatorActivity
 import com.jux.composeplayground.ui.tutorials.unscramble.UnscrambleActivity
 
@@ -27,6 +28,7 @@ object TutorialDataSource {
             R.string.unscramble_activity,
             R.drawable.outline_game_24,
             UnscrambleActivity::class.java
-        )
+        ),
+        Tutorial(R.string.cupcakes, R.drawable.outline_navigation_24, CupcakeActivity::class.java)
     )
 }

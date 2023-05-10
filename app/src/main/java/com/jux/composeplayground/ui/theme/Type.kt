@@ -62,6 +62,11 @@ val Typography = Typography(
         fontFamily = rubik,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp
+    ),
+    headlineLarge = TextStyle(
+        fontFamily = rubik,
+        fontWeight = FontWeight.Normal,
+        fontSize = 26.sp
     )
     /* Other default text styles to override
     button = TextStyle(

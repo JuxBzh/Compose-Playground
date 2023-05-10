@@ -5,6 +5,7 @@
 
     <dimen name="component_default_spacing">8dp</dimen>
     <dimen name="component_default_spacing_large">16dp</dimen>
+    <dimen name="component_default_spacing_xlarge">24dp</dimen>
 
     <dimen name="elevation_card">4dp</dimen>
 
