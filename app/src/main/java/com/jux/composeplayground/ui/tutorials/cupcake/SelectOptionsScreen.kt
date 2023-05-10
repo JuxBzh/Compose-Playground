@@ -1,9 +1,11 @@
 package com.jux.composeplayground.ui.tutorials.cupcake
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.jux.composeplayground.R
 import com.jux.composeplayground.data.CupcakeDataSource
-import com.jux.composeplayground.ui.components.DefaultScaffold
 import com.jux.composeplayground.ui.components.MediumTitleWithText
 import com.jux.composeplayground.ui.components.NavigationButtonBar
 import com.jux.composeplayground.ui.components.RadioButtonWithText
@@ -24,17 +25,18 @@ import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
 
 @Composable
 fun SelectOptionScreen(
-    paddings: PaddingValues,
     subtotal: String,
     options: List<String>,
+    isNextEnabled: Boolean,
     modifier: Modifier = Modifier,
-    onSelectionChange: (String) -> Unit = {}
+    onSelectionChange: (String) -> Unit = {},
+    onPreviousClick: () -> Unit = {},
+    onNextClick: () -> Unit = {}
 ) {
-    var selectedFlavor by rememberSaveable { mutableStateOf("") }
+    var selectedOption by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = modifier
-            .padding(paddings)
             .padding(
                 vertical = dimensionResource(id = R.dimen.activity_vertical_margin),
                 horizontal = dimensionResource(id = R.dimen.activity_horizontal_margin)
@@ -44,10 +46,10 @@ fun SelectOptionScreen(
             options.forEach { option ->
                 RadioButtonWithText(
                     text = option,
-                    selected = selectedFlavor == option,
+                    selected = selectedOption == option,
                     onClick = {
-                        selectedFlavor = it
-                        onSelectionChange(selectedFlavor)
+                        selectedOption = it
+                        onSelectionChange(selectedOption)
                     }
                 )
             }
@@ -59,7 +61,12 @@ fun SelectOptionScreen(
                     .padding(vertical = dimensionResource(id = R.dimen.component_default_spacing))
             )
         }
-        NavigationButtonBar(modifier = modifier.weight(1f))
+        NavigationButtonBar(
+            modifier = modifier.weight(1f),
+            isNextEnabled = isNextEnabled,
+            onPrevious = onPreviousClick,
+            onNext = onNextClick
+        )
     }
 }
 
@@ -67,9 +74,12 @@ fun SelectOptionScreen(
 @Composable
 fun SelectOptionsPreview() {
     ComposePlaygroundTheme {
-        DefaultScaffold(topAppBarTitleResId = R.string.choose_flavor) {
-            val flavors = CupcakeDataSource.flavors().map { resId -> stringResource(id = resId) }
-            SelectOptionScreen(it, "300", flavors)
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            val flavors = CupcakeDataSource.flavors.map { resId -> stringResource(id = resId) }
+            SelectOptionScreen("300", flavors, isNextEnabled = false)
         }
     }
 }

@@ -6,11 +6,13 @@ import com.jux.composeplayground.R
 object CupcakeDataSource {
 
     @StringRes
-    fun flavors(): List<Int> = listOf(
+    val flavors = listOf(
         R.string.vanilla,
         R.string.chocolate,
         R.string.red_velvet,
         R.string.salted_caramel,
         R.string.coffee
     )
+
+    val quantityOptions = listOf(1, 6, 12)
 }

@@ -1,5 +1,6 @@
 package com.jux.composeplayground.ui.components
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
@@ -18,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jux.composeplayground.R
@@ -52,14 +56,33 @@ fun SwitchWithText(
 fun ButtonWithText(
     @StringRes resId: Int,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     Button(
         modifier = modifier,
         onClick = onClick,
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors()
     ) {
         Text(text = stringResource(id = resId))
+    }
+}
+
+@Composable
+fun ButtonWithText(
+    text: String,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    onClick: () -> Unit
+) {
+    Button(
+        modifier = modifier,
+        onClick = onClick,
+        enabled = enabled,
+        colors = ButtonDefaults.buttonColors()
+    ) {
+        Text(text = text)
     }
 }
 
@@ -112,6 +135,7 @@ fun RadioButtonWithText(
 @Composable
 fun NavigationButtonBar(
     modifier: Modifier = Modifier,
+    isNextEnabled: Boolean = false,
     onPrevious: () -> Unit = {},
     onNext: () -> Unit = {}
 ) {
@@ -128,8 +152,21 @@ fun NavigationButtonBar(
         ButtonWithText(
             resId = R.string.next,
             onClick = onNext,
+            enabled = isNextEnabled,
             modifier = modifier.weight(1f)
         )
+    }
+}
+
+@Composable
+fun IconButtonWithDrawable(
+    @DrawableRes resId: Int,
+    modifier: Modifier = Modifier,
+    description: String? = null,
+    onClick: () -> Unit = {}
+) {
+    IconButton(onClick = onClick, modifier = modifier) {
+        Icon(painter = painterResource(id = resId), contentDescription = description)
     }
 }
 

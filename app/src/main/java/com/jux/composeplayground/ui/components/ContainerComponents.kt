@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.jux.composeplayground.R
 import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
 
 @Composable
@@ -30,11 +31,20 @@ fun DefaultPage(content: @Composable () -> Unit) {
 fun DefaultScaffold(
     @StringRes topAppBarTitleResId: Int,
     modifier: Modifier = Modifier,
+    canNavigateBack: Boolean = false,
+    navigateUp: () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
         modifier = modifier,
-        topBar = { AppBarWithTitle(titleResId = topAppBarTitleResId) }
+        topBar = {
+            AppBarWithTitle(
+                titleResId = topAppBarTitleResId,
+                canNavigateBack = canNavigateBack,
+                navigateUp = navigateUp,
+                modifier = modifier
+            )
+        }
     ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -47,7 +57,12 @@ fun DefaultScaffold(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppBarWithTitle(@StringRes titleResId: Int, modifier: Modifier = Modifier) {
+fun AppBarWithTitle(
+    @StringRes titleResId: Int,
+    modifier: Modifier = Modifier,
+    canNavigateBack: Boolean = false,
+    navigateUp: () -> Unit = {}
+) {
     TopAppBar(
         modifier = modifier,
         title = {
@@ -58,6 +73,10 @@ fun AppBarWithTitle(@StringRes titleResId: Int, modifier: Modifier = Modifier) {
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
+        ),
+        navigationIcon = {
+            if (canNavigateBack.not()) return@TopAppBar
+            IconButtonWithDrawable(resId = R.drawable.outline_arrow_back_24, onClick = navigateUp)
+        }
     )
 }

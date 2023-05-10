@@ -12,5 +12,9 @@ fun ImageWithDrawable(
     modifier: Modifier = Modifier,
     description: String? = null
 ) {
-    Image(painter = painterResource(id = resId), contentDescription = description)
+    Image(
+        painter = painterResource(id = resId),
+        contentDescription = description,
+        modifier = modifier
+    )
 }

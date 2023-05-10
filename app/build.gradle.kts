@@ -55,6 +55,7 @@ dependencies {
     implementation(Deps.androidXLifecycleRuntime)
     implementation(Deps.androidXActivityCompose)
     implementation(Deps.androidXViewModelCompose)
+    implementation(Deps.androidXNavigation)
 
     implementation(platform(Deps.androidXBOM))
     implementation(Deps.androidXComposeUi)
