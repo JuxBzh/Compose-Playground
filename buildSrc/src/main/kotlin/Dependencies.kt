@@ -16,7 +16,7 @@ object Versions {
     const val androidXLifecycle = "2.6.1"
     const val androidXActivity = "1.7.1"
     const val androidXComposeUi = "1.4.2"
-    const val androidXComposeMaterial3 = "1.0.1"
+    const val androidXBOM = "2023.05.00"
 }
 
 object Plugins {
@@ -30,11 +30,12 @@ object Deps {
     val androidXActivityCompose by lazy { "androidx.activity:activity-compose:${Versions.androidXActivity}" }
     val androidXViewModelCompose by lazy { "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.androidXLifecycle}" }
     val androidXComposeUi by lazy { "androidx.activity:activity-compose:${Versions.androidXComposeUi}" }
-    val androidXComposeToolingPreview by lazy { "androidx.compose.ui:ui-tooling-preview:${Versions.androidXComposeUi}" }
-    val androidXComposeMaterial3 by lazy { "androidx.compose.material3:material3:${Versions.androidXComposeMaterial3}" }
+    val androidXComposeToolingPreview by lazy { "androidx.compose.ui:ui-tooling-preview" }
+    val androidXComposeMaterial3 by lazy { "androidx.compose.material3:material3" }
+    val androidXBOM by lazy { "androidx.compose:compose-bom:${Versions.androidXBOM}" }
 
-    val androidXCompuseUiTestJUnit4 by lazy { "androidx.compose.ui:ui-test-junit4:${Versions.androidXComposeUi}" }
+    val androidXCompuseUiTestJUnit4 by lazy { "androidx.compose.ui:ui-test-junit4" }
 
-    val androidXCompuseUiTooling by lazy { "androidx.compose.ui:ui-tooling:${Versions.androidXComposeUi}" }
-    val androidXCompuseUiTestManifest by lazy { "androidx.compose.ui:ui-test-manifest:${Versions.androidXComposeUi}" }
+    val androidXCompuseUiTooling by lazy { "androidx.compose.ui:ui-tooling" }
+    val androidXCompuseUiTestManifest by lazy { "androidx.compose.ui:ui-test-manifest" }
 }
