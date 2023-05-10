@@ -17,6 +17,8 @@ object Versions {
     const val androidXActivity = "1.7.1"
     const val androidXComposeUi = "1.4.2"
     const val androidXBOM = "2023.05.00"
+
+    const val junitJupiter = "5.9.2"
 }
 
 object Plugins {
@@ -35,6 +37,9 @@ object Deps {
     val androidXBOM by lazy { "androidx.compose:compose-bom:${Versions.androidXBOM}" }
 
     val androidXCompuseUiTestJUnit4 by lazy { "androidx.compose.ui:ui-test-junit4" }
+    val junitJupiterApi by lazy {"org.junit.jupiter:junit-jupiter-api:${Versions.junitJupiter}"}
+    val junitJupiterEngine by lazy {"org.junit.jupiter:junit-jupiter-engine:${Versions.junitJupiter}"}
+    val junitJupiterVintage by lazy {"org.junit.vintage:junit-vintage-engine:${Versions.junitJupiter}"}
 
     val androidXCompuseUiTooling by lazy { "androidx.compose.ui:ui-tooling" }
     val androidXCompuseUiTestManifest by lazy { "androidx.compose.ui:ui-test-manifest" }

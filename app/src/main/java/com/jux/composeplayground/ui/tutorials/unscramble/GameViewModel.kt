@@ -20,9 +20,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.jux.composeplayground.data.MAX_NO_OF_WORDS
-import com.jux.composeplayground.data.SCORE_INCREASE
-import com.jux.composeplayground.data.allWords
+import com.jux.composeplayground.data.words.WordsData
+import com.jux.composeplayground.data.words.WordsDataSource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -31,7 +30,7 @@ import kotlinx.coroutines.flow.update
 /**
  * ViewModel containing the app data and methods to process the data
  */
-class GameViewModel : ViewModel() {
+class GameViewModel(private val dataSource: WordsDataSource = WordsData()) : ViewModel() {
 
     // Game UI state
     private val _uiState = MutableStateFlow(GameUiState())
@@ -71,7 +70,7 @@ class GameViewModel : ViewModel() {
         if (userGuess.equals(currentWord, ignoreCase = true)) {
             // User's guess is correct, increase the score
             // and call updateGameState() to prepare the game for next round
-            val updatedScore = _uiState.value.score.plus(SCORE_INCREASE)
+            val updatedScore = _uiState.value.score.plus(dataSource.scoreIncrease)
             updateGameState(updatedScore)
         } else {
             // User's guess is wrong, show an error
@@ -97,7 +96,7 @@ class GameViewModel : ViewModel() {
      * current game state.
      */
     private fun updateGameState(updatedScore: Int) {
-        if (usedWords.size == MAX_NO_OF_WORDS) {
+        if (usedWords.size == dataSource.maxNumberOfWords) {
             //Last round in the game, update isGameOver to true, don't pick a new word
             _uiState.update { currentState ->
                 currentState.copy(
@@ -131,7 +130,7 @@ class GameViewModel : ViewModel() {
 
     private fun pickRandomWordAndShuffle(): String {
         // Continue picking up a new random word until you get one that hasn't been used before
-        currentWord = allWords.random()
+        currentWord = dataSource.allWords.random()
         return if (usedWords.contains(currentWord)) {
             pickRandomWordAndShuffle()
         } else {
