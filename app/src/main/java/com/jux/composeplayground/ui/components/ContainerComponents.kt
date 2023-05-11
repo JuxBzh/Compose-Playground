@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import com.jux.composeplayground.R
 import com.jux.composeplayground.ui.theme.ComposePlaygroundTheme
 
@@ -76,7 +77,11 @@ fun AppBarWithTitle(
         ),
         navigationIcon = {
             if (canNavigateBack.not()) return@TopAppBar
-            IconButtonWithDrawable(resId = R.drawable.outline_arrow_back_24, onClick = navigateUp)
+            IconButtonWithDrawable(
+                resId = R.drawable.outline_arrow_back_24,
+                description = stringResource(id = R.string.back_button),
+                onClick = navigateUp
+            )
         }
     )
 }

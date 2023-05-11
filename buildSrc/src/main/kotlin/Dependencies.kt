@@ -20,6 +20,9 @@ object Versions {
     const val androidXNavigation = "2.5.3"
 
     const val junitJupiter = "5.9.2"
+    const val junit = "4.3.12"
+    const val junitExt = "1.1.5"
+    const val espresso = "3.5.1"
 }
 
 object Plugins {
@@ -39,10 +42,16 @@ object Deps {
     val androidXNavigation by lazy { "androidx.navigation:navigation-compose:${Versions.androidXNavigation}" }
 
     val androidXCompuseUiTestJUnit4 by lazy { "androidx.compose.ui:ui-test-junit4" }
+    val junit by lazy { "junit:junit:${Versions.junit}" }
     val junitJupiterApi by lazy { "org.junit.jupiter:junit-jupiter-api:${Versions.junitJupiter}" }
     val junitJupiterEngine by lazy { "org.junit.jupiter:junit-jupiter-engine:${Versions.junitJupiter}" }
     val junitJupiterVintage by lazy { "org.junit.vintage:junit-vintage-engine:${Versions.junitJupiter}" }
 
     val androidXCompuseUiTooling by lazy { "androidx.compose.ui:ui-tooling" }
     val androidXCompuseUiTestManifest by lazy { "androidx.compose.ui:ui-test-manifest" }
+
+    val androidXJUnitExt by lazy { "androidx.test.ext:junit:${Versions.junitExt}" }
+    val androidXNavigationTesting by lazy { "androidx.navigation:navigation-testing:${Versions.androidXNavigation}" }
+    val espressoCore by lazy { "androidx.test.espresso:espresso-core:${Versions.espresso}" }
+    val espressoIntents by lazy { "androidx.test.espresso:espresso-intents:${Versions.espresso}" }
 }

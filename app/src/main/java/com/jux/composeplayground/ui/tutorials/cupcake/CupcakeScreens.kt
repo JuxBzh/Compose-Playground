@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -21,9 +22,11 @@ import com.jux.composeplayground.ui.tutorials.cupcake.CupcakeScreen.START
 import com.jux.composeplayground.ui.tutorials.cupcake.CupcakeScreen.SUMMARY
 
 @Composable
-fun CupcakeOrderFunnel(viewModel: OrderViewModel = viewModel()) {
+fun CupcakeOrderFunnel(
+    viewModel: OrderViewModel = viewModel(),
+    navController: NavHostController = rememberNavController()
+) {
     val uiState by viewModel.uiState.collectAsState()
-    val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = backStackEntry?.destination?.route ?: START.name
 
