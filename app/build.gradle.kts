@@ -53,6 +53,7 @@ dependencies {
     implementation(Deps.androidXComposeUi)
     implementation(Deps.androidXComposeToolingPreview)
     implementation(Deps.androidXComposeMaterial3)
+    implementation(Deps.mavericksCompose)
     // endregion
 
     // region Test libraries

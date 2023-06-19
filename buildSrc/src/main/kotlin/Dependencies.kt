@@ -9,7 +9,7 @@ object Config {
 }
 
 object Versions {
-    const val grade = "8.0.0"
+    const val grade = "8.0.2"
     const val kotlin = "1.8.20"
 
     const val androidXCore = "1.10.0"
@@ -17,6 +17,7 @@ object Versions {
     const val androidXActivity = "1.7.1"
     const val androidXComposeUi = "1.4.2"
     const val androidXComposeMaterial3 = "1.0.1"
+    const val mavericks = "3.0.3"
 }
 
 object Plugins {
@@ -36,4 +37,6 @@ object Deps {
 
     val androidXCompuseUiTooling by lazy { "androidx.compose.ui:ui-tooling:${Versions.androidXComposeUi}" }
     val androidXCompuseUiTestManifest by lazy { "androidx.compose.ui:ui-test-manifest:${Versions.androidXComposeUi}" }
+
+    val mavericksCompose by lazy { "com.airbnb.android:mavericks-compose:${Versions.mavericks}" }
 }
